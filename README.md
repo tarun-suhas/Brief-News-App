@@ -27,6 +27,11 @@
 - **Localizations**: Flutter Intl (ARB files)
 - **Dependencies**: `timeago`, `sensors_plus`, `url_launcher`, `google_fonts`
 
+## 📱 Platform Support
+
+- **Android**: Android 5.0 (API 21) or higher.
+- **iOS**: iOS 13.0 or higher.
+
 ## 💎 Technical Wins
 
 ### 1. High-Fidelity Social Animations
