@@ -1,0 +1,27 @@
+--- lib/services/auth_service.dart
++++ lib/services/auth_service.dart
+@@ -13,10 +13,14 @@
+   AuthService() {
++    print("AuthService initialized");
+     _auth.authStateChanges().listen((user) async {
++      print("Auth state changed: ${user?.uid}");
+       if (user != null) {
++        print("Fetching user data...");
+         await _fetchUserData(user.uid);
+       } else {
+         _currentUserData = null;
+       }
++      print("Notifying listeners, currentUserData: ${_currentUserData?.uid}");
+       notifyListeners();
+     });
+   }
+@@ -23,6 +27,7 @@
+   Future<void> _fetchUserData(String uid) async {
++    print("Attempting to get doc for $uid");
+     final doc = await _firestore.collection('users').doc(uid).get();
++    print("Doc exists: ${doc.exists}");
+     if (doc.exists && doc.data() != null) {
+       _currentUserData = UserModel.fromMap(doc.data()!, doc.id);
++      print("Data assigned: ${_currentUserData?.name}");
+     }
+   }
